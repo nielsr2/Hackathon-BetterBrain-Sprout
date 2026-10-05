@@ -17,21 +17,6 @@
       },
       "hash": "aa5fc638d623f56178d50329d9ad8c541a57fe66"
     },
-    "com.nib.editor-theme": {
-      "version": "file:C:/Users/UR85XM/Desktop/000000_UNITY_PROJECTS/UnityPackages/com.nib.editor-theme",
-      "depth": 0,
-      "source": "local",
-      "dependencies": {}
-    },
-    "com.nib.proctree": {
-      "version": "file:C:/Users/UR85XM/Desktop/000000_UNITY_PROJECTS/UnityPackages/com.nib.proctree",
-      "depth": 0,
-      "source": "local",
-      "dependencies": {
-        "com.unity.render-pipelines.high-definition": "17.4.0",
-        "com.nib.editor-theme": "0.1.0"
-      }
-    },
     "com.unity.bindings.openimageio": {
       "version": "1.0.2",
       "depth": 1,

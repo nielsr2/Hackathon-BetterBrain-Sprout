@@ -1,0 +1,36 @@
+/* Nib editor design tokens.
+   Dark values are the default (Pro skin); NibTheme adds .nib-root--light on the
+   Personal skin. Family classes set the single per-window accent — one accent
+   per view, everything else neutral (EDITOR_UI_DESIGN_SPEC.md §3). */
+
+.nib-root {
+    --nib-ok: #3FB950;
+    --nib-warn: #F4BC02;
+    --nib-err: #E5534B;
+    --nib-dim: #8A9096;
+    --nib-surface-raised: rgba(255, 255, 255, 0.04);
+    --nib-surface-inset: rgba(0, 0, 0, 0.22);
+    --nib-accent: #7E8C9A; /* fallback when no family class is set */
+    --nib-accent-contrast: #101214;
+}
+
+.nib-root--light {
+    --nib-ok: #2A9E3E;
+    --nib-warn: #B08600;
+    --nib-err: #C22020;
+    --nib-dim: #6A7076;
+    --nib-surface-raised: rgba(0, 0, 0, 0.05);
+    --nib-surface-inset: rgba(0, 0, 0, 0.08);
+    --nib-accent: #5A6874;
+    --nib-accent-contrast: #FFFFFF;
+}
+
+/* Family accents — botanical (leaf), light & look (tungsten), hardware & signal (blue) */
+.nib-fam-botanical { --nib-accent: #8FBF6F; --nib-accent-contrast: #101214; }
+.nib-root--light.nib-fam-botanical { --nib-accent: #4E7A34; --nib-accent-contrast: #FFFFFF; }
+
+.nib-fam-light { --nib-accent: #E0A33C; --nib-accent-contrast: #101214; }
+.nib-root--light.nib-fam-light { --nib-accent: #8A6414; --nib-accent-contrast: #FFFFFF; }
+
+.nib-fam-signal { --nib-accent: #5B8DEF; --nib-accent-contrast: #101214; }
+.nib-root--light.nib-fam-signal { --nib-accent: #2C5DB8; --nib-accent-contrast: #FFFFFF; }

@@ -1,0 +1,36 @@
+# --- Unity package repo (this folder IS the package root) ---
+# .meta files are PART of the package and MUST be committed — do not ignore them.
+
+# Build output
+/Build/
+*.unitypackage
+
+# Unity project cruft (only present if dropped inside a project)
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Ll]ogs/
+[Uu]serSettings/
+.vs/
+.idea/
+
+# Generated IDE/project files
+*.csproj
+*.sln
+*.suo
+*.user
+*.userprefs
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Offline harness build output
+Tests~/CoreHarness/bin/
+Tests~/CoreHarness/obj/
+Tests~/CoreHarness/out/
+!Tests~/CoreHarness/CoreHarness.csproj
+!Tests~/UnityCompile/UnityCompile.csproj
+Tests~/UnityCompile/bin/
+Tests~/UnityCompile/obj/

@@ -1,0 +1,20 @@
+{
+  "name": "Nib.ProcTree.Editor",
+  "rootNamespace": "Nib.ProcTree.Editor",
+  "references": [
+    "Nib.ProcTree.Runtime",
+    "Nib.ProcTree.Core",
+    "Unity.RenderPipelines.Core.Runtime",
+    "Unity.RenderPipelines.HighDefinition.Runtime",
+    "Unity.RenderPipelines.HighDefinition.Editor",
+    "Nib.EditorTheme.Editor"
+  ],
+  "includePlatforms": [
+    "Editor"
+  ],
+  "excludePlatforms": [],
+  "versionDefines": [
+    { "name": "com.unity.render-pipelines.high-definition", "expression": "", "define": "PROCTREE_HDRP" }
+  ],
+  "autoReferenced": true
+}

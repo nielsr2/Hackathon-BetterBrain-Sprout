@@ -1,0 +1,55 @@
+/* Shared Nib control styles. Base surfaces/text always come from the built-in
+   --unity-colors-* variables so both editor themes stay correct. */
+
+.nib-section-header {
+    -unity-font-style: bold;
+    font-size: 10px;
+    letter-spacing: 1.2px;
+    color: var(--nib-dim);
+    margin-top: 10px;
+    margin-bottom: 4px;
+}
+
+.nib-card {
+    background-color: var(--nib-surface-raised);
+    border-width: 1px;
+    border-color: var(--unity-colors-default-border);
+    border-radius: 4px;
+    padding: 8px;
+    margin-bottom: 6px;
+}
+
+.nib-row {
+    flex-direction: row;
+    align-items: center;
+}
+
+.nib-grow { flex-grow: 1; }
+
+.nib-accent-button {
+    background-color: var(--nib-accent);
+    color: var(--nib-accent-contrast);
+    -unity-font-style: bold;
+    border-width: 0;
+    border-radius: 3px;
+    padding: 3px 12px;
+}
+
+.nib-pill {
+    border-radius: 8px;
+    padding: 0 8px;
+    font-size: 10px;
+    -unity-text-align: middle-center;
+    background-color: var(--nib-surface-raised);
+    color: var(--nib-dim);
+}
+
+.nib-pill--ok   { color: var(--nib-ok); }
+.nib-pill--warn { color: var(--nib-warn); }
+.nib-pill--err  { color: var(--nib-err); }
+
+.nib-dim-label { color: var(--nib-dim); font-size: 10px; }
+
+/* Fix for TabView content refusing to fill (EDITOR_UI_DESIGN_SPEC.md §4.3) */
+.unity-tab__content-container,
+.unity-tab-view__content-container { flex-grow: 1; }

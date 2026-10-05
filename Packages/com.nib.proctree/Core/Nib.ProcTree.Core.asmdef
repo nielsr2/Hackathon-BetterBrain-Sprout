@@ -1,0 +1,10 @@
+{
+  "name": "Nib.ProcTree.Core",
+  "rootNamespace": "Nib.ProcTree.Core",
+  "references": [],
+  "includePlatforms": [],
+  "excludePlatforms": [],
+  "allowUnsafeCode": false,
+  "noEngineReferences": true,
+  "autoReferenced": true
+}

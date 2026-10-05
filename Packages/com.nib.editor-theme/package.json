@@ -1,0 +1,9 @@
+{
+  "name": "com.nib.editor-theme",
+  "version": "0.1.0",
+  "displayName": "Nib Editor Theme",
+  "description": "Shared UI Toolkit theme for Nib editor tools: design tokens (Variables.uss), shared control styles (Controls.uss), and common editor elements (StatusPill). Apply via Nib.EditorTheme.NibTheme.Apply(root, family).",
+  "unity": "6000.0",
+  "author": { "name": "Nib" },
+  "keywords": [ "editor", "ui-toolkit", "theme", "nib" ]
+}

@@ -1,0 +1,6 @@
+/* Tree Profile inspector. Colours from com.nib.editor-theme tokens; no hex. */
+.tp-root { padding-top: 4px; }
+.tp-header { align-items: center; }
+.tp-title { -unity-font-style: bold; font-size: 14px; }
+.tp-hint { margin: 2px 0 6px 0; white-space: normal; }
+.tp-root > .unity-foldout { margin-bottom: 4px; }

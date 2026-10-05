@@ -1,0 +1,28 @@
+{
+  "name": "com.nib.proctree",
+  "version": "0.1.0",
+  "displayName": "Proc Tree",
+  "description": "Procedurally simulated parkland oak whose single growth slider (0-1) replays the tree's life live on the GPU: nothing, seedling, sapling, mature crown with leaves.",
+  "unity": "6000.3",
+  "author": {
+    "name": "Nib"
+  },
+  "dependencies": {
+    "com.unity.render-pipelines.high-definition": "17.4.0",
+    "com.nib.editor-theme": "0.1.0"
+  },
+  "samples": [
+    {
+      "displayName": "Growth Demo",
+      "description": "One oak with its growth ping-ponging under a rotating sun.",
+      "path": "Samples~/GrowthDemo"
+    }
+  ],
+  "keywords": [
+    "tree",
+    "oak",
+    "procedural",
+    "growth",
+    "hdrp"
+  ]
+}

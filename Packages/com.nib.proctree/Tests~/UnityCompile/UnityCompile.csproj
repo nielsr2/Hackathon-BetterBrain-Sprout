@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <!-- Offline compile check: builds Core + Runtime + Editor sources against Unity's module
+       assemblies (Managed/UnityEngine/*.dll, never the monolithic UnityEditor.dll — see the root
+       CLAUDE.md). Catches C# API mistakes while the Unity editor is not reachable. Not a test run. -->
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <OutputType>Library</OutputType>
+    <LangVersion>9.0</LangVersion>
+    <Nullable>disable</Nullable>
+    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+    <DefineConstants>UNITY_EDITOR;UNITY_2023_1_OR_NEWER;UNITY_6000_0_OR_NEWER;UNITY_INCLUDE_TESTS;PROCTREE_HDRP</DefineConstants>
+    <NoWarn>CS1591;CS0618</NoWarn>
+    <UnityData Condition="'$(UnityData)' == ''">C:\Program Files\Unity\Hub\Editor\6000.5.6f1\Editor\Data</UnityData>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="..\..\Core\**\*.cs" />
+    <Compile Include="..\..\Runtime\**\*.cs" />
+    <Compile Include="..\..\Editor\**\*.cs" />
+    <!-- Sibling dependency (com.nib.editor-theme), compiled in for the check. -->
+    <Compile Include="..\..\..\com.nib.editor-theme\Editor\**\*.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="$(UnityData)\Managed\UnityEngine\*.dll" Private="false" />
+    <!-- HDRP + SRP Core from the docs pipeline's reference DLLs (UnityPackages/Documentation/libs). -->
+    <Reference Include="..\..\..\Documentation\libs\Unity.RenderPipelines.*.dll" Private="false" />
+  </ItemGroup>
+</Project>

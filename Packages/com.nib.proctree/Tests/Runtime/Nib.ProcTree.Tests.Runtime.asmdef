@@ -1,0 +1,11 @@
+{
+  "name": "Nib.ProcTree.Tests.Runtime",
+  "rootNamespace": "Nib.ProcTree.PlayTests",
+  "references": ["Nib.ProcTree.Runtime", "Nib.ProcTree.Core"],
+  "includePlatforms": [],
+  "excludePlatforms": [],
+  "precompiledReferences": ["nunit.framework.dll"],
+  "defineConstraints": ["UNITY_INCLUDE_TESTS"],
+  "optionalUnityReferences": ["TestAssemblies"],
+  "autoReferenced": false
+}

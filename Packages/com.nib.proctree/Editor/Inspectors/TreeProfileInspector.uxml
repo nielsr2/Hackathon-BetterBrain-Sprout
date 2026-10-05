@@ -1,0 +1,79 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements">
+    <ui:VisualElement class="tp-root">
+        <ui:VisualElement class="nib-row tp-header">
+            <ui:Label text="Tree Profile" class="tp-title nib-grow" />
+            <ui:Button name="reset" text="Reset to Oak" tooltip="Restore the shipped Oak (Parkland) values" />
+        </ui:VisualElement>
+        <ui:Label text="Trees using this profile regenerate in the background when you change it." class="nib-dim-label tp-hint" />
+
+        <ui:Foldout text="Growth slider" value="true" class="nib-card">
+            <uie:PropertyField binding-path="growthCurve" label="Slider → age" />
+            <uie:PropertyField binding-path="parameters.years" />
+            <uie:PropertyField binding-path="parameters.flushFraction" />
+        </ui:Foldout>
+
+        <ui:Foldout text="Crown envelope" value="true" class="nib-card">
+            <uie:PropertyField binding-path="parameters.matureHeight" />
+            <uie:PropertyField binding-path="parameters.matureWidth" />
+            <uie:PropertyField binding-path="parameters.crownBaseFraction" />
+            <uie:PropertyField binding-path="heightByAge" />
+            <uie:PropertyField binding-path="widthByAge" />
+        </ui:Foldout>
+
+        <ui:Foldout text="Light &amp; vigor" value="false" class="nib-card">
+            <uie:PropertyField binding-path="parameters.markerCount" />
+            <uie:PropertyField binding-path="parameters.markerAgeBias" />
+            <uie:PropertyField binding-path="parameters.perceptionAngle" />
+            <uie:PropertyField binding-path="parameters.perceptionRadiusFactor" />
+            <uie:PropertyField binding-path="parameters.occupancyRadiusFactor" />
+            <uie:PropertyField binding-path="parameters.vigorScale" />
+            <uie:PropertyField binding-path="parameters.apicalDominance" />
+            <uie:PropertyField binding-path="parameters.lateralLightFactor" />
+            <uie:PropertyField binding-path="parameters.terminalClusterSize" />
+            <uie:PropertyField binding-path="parameters.apicalBaseLight" />
+            <uie:PropertyField binding-path="parameters.leaderDominanceAge" />
+            <uie:PropertyField binding-path="parameters.budDeathYears" />
+        </ui:Foldout>
+
+        <ui:Foldout text="Shoots &amp; shape" value="false" class="nib-card">
+            <uie:PropertyField binding-path="parameters.internodeLength" />
+            <uie:PropertyField binding-path="internodeLengthByAge" />
+            <uie:PropertyField binding-path="parameters.maxInternodesPerYear" />
+            <uie:PropertyField binding-path="parameters.straightness" />
+            <uie:PropertyField binding-path="parameters.tropismSpace" />
+            <uie:PropertyField binding-path="tropismGravityByAge" />
+            <uie:PropertyField binding-path="parameters.gnarliness" />
+            <uie:PropertyField binding-path="parameters.phyllotaxisAngle" />
+            <uie:PropertyField binding-path="parameters.branchingAngle" />
+        </ui:Foldout>
+
+        <ui:Foldout text="Self-pruning" value="false" class="nib-card">
+            <uie:PropertyField binding-path="parameters.pruneLightThreshold" />
+            <uie:PropertyField binding-path="parameters.pruneProtectFraction" />
+            <uie:PropertyField binding-path="parameters.pruneYears" />
+            <uie:PropertyField binding-path="parameters.pruneStubLength" />
+            <uie:PropertyField binding-path="parameters.deathFadeYears" />
+        </ui:Foldout>
+
+        <ui:Foldout text="Leaves &amp; seedling" value="false" class="nib-card">
+            <uie:PropertyField binding-path="parameters.leavesPerInternode" />
+            <uie:PropertyField binding-path="parameters.leafZoneInternodes" />
+            <uie:PropertyField binding-path="parameters.leafMinLifeYears" />
+            <uie:PropertyField binding-path="parameters.leafFlushYears" />
+            <uie:PropertyField binding-path="parameters.leafSize" />
+            <uie:PropertyField binding-path="parameters.leafSizeJitter" />
+            <uie:PropertyField binding-path="parameters.seedlingHeight" />
+            <uie:PropertyField binding-path="parameters.seedlingLeafCount" />
+        </ui:Foldout>
+
+        <ui:Foldout text="Wood" value="false" class="nib-card">
+            <uie:PropertyField binding-path="parameters.minTwigRadius" />
+            <uie:PropertyField binding-path="parameters.pipeExponent" />
+            <uie:PropertyField binding-path="parameters.rootFlare" />
+            <uie:PropertyField binding-path="parameters.rootFlareHeight" />
+            <uie:PropertyField binding-path="parameters.ringSidesMin" />
+            <uie:PropertyField binding-path="parameters.ringSidesMax" />
+            <uie:PropertyField binding-path="parameters.collarFlare" />
+        </ui:Foldout>
+    </ui:VisualElement>
+</ui:UXML>

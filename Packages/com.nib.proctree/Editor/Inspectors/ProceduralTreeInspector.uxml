@@ -1,0 +1,35 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xmlns:nib="Nib.EditorTheme">
+    <ui:VisualElement class="pt-root">
+        <ui:VisualElement class="nib-row pt-header">
+            <ui:Label text="Proc Tree" class="pt-title nib-grow" />
+            <nib:StatusPill name="status" text="—" />
+        </ui:VisualElement>
+
+        <ui:VisualElement class="nib-card pt-growth-card">
+            <ui:Label text="Growth" class="nib-section-header" />
+            <ui:Slider name="growth" binding-path="growth" low-value="0" high-value="1" show-input-field="true" class="pt-growth-slider" />
+            <ui:Label name="year-readout" text="—" class="pt-readout" />
+        </ui:VisualElement>
+
+        <ui:VisualElement class="nib-card">
+            <ui:Label text="Tree" class="nib-section-header" />
+            <uie:PropertyField binding-path="profile" />
+            <ui:VisualElement class="nib-row">
+                <uie:PropertyField binding-path="seed" class="nib-grow" />
+                <ui:Button name="dice" text="🎲" tooltip="Random seed" class="pt-dice" />
+            </ui:VisualElement>
+            <uie:PropertyField binding-path="barkMaterial" />
+            <uie:PropertyField binding-path="leafMaterial" />
+            <uie:PropertyField binding-path="castShadows" />
+            <ui:VisualElement class="nib-row pt-actions">
+                <ui:Button name="regenerate" text="Regenerate" class="nib-accent-button nib-grow" />
+            </ui:VisualElement>
+            <ui:ProgressBar name="progress" title="Growing…" low-value="0" high-value="1" />
+        </ui:VisualElement>
+
+        <ui:VisualElement class="nib-card">
+            <ui:Label text="Stats" class="nib-section-header" />
+            <ui:Label name="stats" text="—" class="nib-dim-label pt-stats" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

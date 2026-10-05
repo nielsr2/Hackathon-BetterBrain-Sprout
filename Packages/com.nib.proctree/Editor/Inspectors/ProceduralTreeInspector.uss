@@ -1,0 +1,11 @@
+/* Proc Tree inspector. Colours come from com.nib.editor-theme tokens / --unity-colors-*; no hex. */
+.pt-root { padding-top: 4px; }
+.pt-header { align-items: center; margin-bottom: 4px; }
+.pt-title { -unity-font-style: bold; font-size: 14px; }
+.pt-growth-card { padding-bottom: 6px; }
+.pt-growth-slider { margin-top: 2px; }
+.pt-growth-slider .unity-base-slider__dragger { width: 14px; height: 18px; margin-top: -8px; }
+.pt-readout { -unity-text-align: middle-center; margin-top: 2px; }
+.pt-dice { width: 28px; margin-left: 4px; }
+.pt-actions { margin-top: 4px; }
+.pt-stats { white-space: normal; }

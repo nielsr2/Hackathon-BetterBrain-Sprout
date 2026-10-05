@@ -1,0 +1,10 @@
+{
+  "name": "Nib.ProcTree.Tests.Editor",
+  "rootNamespace": "Nib.ProcTree.Tests",
+  "references": ["Nib.ProcTree.Core", "Nib.ProcTree.Runtime", "Nib.ProcTree.Editor"],
+  "includePlatforms": ["Editor"],
+  "precompiledReferences": ["nunit.framework.dll"],
+  "defineConstraints": ["UNITY_INCLUDE_TESTS"],
+  "optionalUnityReferences": ["TestAssemblies"],
+  "autoReferenced": false
+}
