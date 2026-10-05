@@ -1,0 +1,17 @@
+{
+  "name": "Relaxation.Runtime",
+  "rootNamespace": "Relaxation",
+  "references": [
+    "Nib.ProcTree.Runtime",
+    "Unity.InputSystem"
+  ],
+  "includePlatforms": [],
+  "excludePlatforms": [],
+  "allowUnsafeCode": false,
+  "overrideReferences": false,
+  "precompiledReferences": [],
+  "autoReferenced": true,
+  "defineConstraints": [],
+  "versionDefines": [],
+  "noEngineReferences": false
+}

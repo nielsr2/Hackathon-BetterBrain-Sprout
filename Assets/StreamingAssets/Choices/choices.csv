@@ -1,0 +1,4 @@
+# Final ERP choice: two rows are used (left, right). Video paths are relative to this file.
+button,video
+STAY,placeholder_stay.mp4
+RUN,placeholder_run.mp4

@@ -1,0 +1,228 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="210mm" height="297mm" viewBox="0 0 794 1123">
+<rect x="0" y="0" width="794" height="1123" rx="0" fill="#ffffff" stroke="none" stroke-width="1"/>
+<text x="60" y="62" font-family="Helvetica, Arial, sans-serif" font-size="26" fill="#1d2129" font-weight="bold" font-style="normal" text-anchor="start">EEG band-power ratios</text>
+<text x="60" y="86" font-family="Helvetica, Arial, sans-serif" font-size="13" fill="#5b6270" font-weight="normal" font-style="normal" text-anchor="start">What each relaxation metric measures, and how it drives the tree</text>
+<text x="734" y="62" font-family="Helvetica, Arial, sans-serif" font-size="10" fill="#8a909c" font-weight="normal" font-style="normal" text-anchor="end">oak_bci · Unicorn Hybrid Black</text>
+<text x="734" y="76" font-family="Helvetica, Arial, sans-serif" font-size="10" fill="#8a909c" font-weight="normal" font-style="normal" text-anchor="end">8 channels averaged · 2026-10-05</text>
+<line x1="60" y1="104" x2="734" y2="104" stroke="#1d2129" stroke-width="1.5"/>
+<text x="60" y="132" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#2f8f5b" font-weight="bold" font-style="normal" text-anchor="start">1  THE FREQUENCY BANDS</text>
+<path d="M239.73333333333332 164 V158 H509.3333333333333 V164" fill="none" stroke="#5b6270" stroke-width="1"/>
+<text x="374.5333333333333" y="154" font-family="Helvetica, Arial, sans-serif" font-size="10" fill="#5b6270" font-weight="normal" font-style="normal" text-anchor="middle">β = βlow + βmid + βhigh  (12–30 Hz)</text>
+<rect x="74.97777777777777" y="168" width="44.93333333333334" height="40" rx="0" fill="#8a6cf0" stroke="none" stroke-width="1"/>
+<line x1="119.91111111111111" y1="168" x2="119.91111111111111" y2="208" stroke="#ffffff" stroke-width="1.5"/>
+<text x="97.44444444444444" y="193" font-family="Helvetica, Arial, sans-serif" font-size="15" fill="#ffffff" font-weight="bold" font-style="normal" text-anchor="middle">δ</text>
+<rect x="119.91111111111111" y="168" width="59.91111111111111" height="40" rx="0" fill="#3f8fe0" stroke="none" stroke-width="1"/>
+<line x1="179.82222222222222" y1="168" x2="179.82222222222222" y2="208" stroke="#ffffff" stroke-width="1.5"/>
+<text x="149.86666666666667" y="193" font-family="Helvetica, Arial, sans-serif" font-size="15" fill="#ffffff" font-weight="bold" font-style="normal" text-anchor="middle">θ</text>
+<rect x="179.82222222222222" y="168" width="59.9111111111111" height="40" rx="0" fill="#2fb57e" stroke="none" stroke-width="1"/>
+<line x1="239.73333333333332" y1="168" x2="239.73333333333332" y2="208" stroke="#ffffff" stroke-width="1.5"/>
+<text x="209.77777777777777" y="193" font-family="Helvetica, Arial, sans-serif" font-size="15" fill="#ffffff" font-weight="bold" font-style="normal" text-anchor="middle">α</text>
+<rect x="239.73333333333332" y="168" width="59.911111111111126" height="40" rx="0" fill="#b9b52a" stroke="none" stroke-width="1"/>
+<line x1="299.64444444444445" y1="168" x2="299.64444444444445" y2="208" stroke="#ffffff" stroke-width="1.5"/>
+<text x="269.68888888888887" y="193" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#ffffff" font-weight="bold" font-style="normal" text-anchor="middle">βl</text>
+<rect x="299.64444444444445" y="168" width="59.9111111111111" height="40" rx="0" fill="#e0962e" stroke="none" stroke-width="1"/>
+<line x1="359.55555555555554" y1="168" x2="359.55555555555554" y2="208" stroke="#ffffff" stroke-width="1.5"/>
+<text x="329.6" y="193" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#ffffff" font-weight="bold" font-style="normal" text-anchor="middle">βm</text>
+<rect x="359.55555555555554" y="168" width="149.77777777777777" height="40" rx="0" fill="#e0603e" stroke="none" stroke-width="1"/>
+<line x1="509.3333333333333" y1="168" x2="509.3333333333333" y2="208" stroke="#ffffff" stroke-width="1.5"/>
+<text x="434.44444444444446" y="193" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#ffffff" font-weight="bold" font-style="normal" text-anchor="middle">βh</text>
+<rect x="509.3333333333333" y="168" width="224.66666666666669" height="40" rx="0" fill="#c94aa8" stroke="none" stroke-width="1"/>
+<line x1="734.0" y1="168" x2="734.0" y2="208" stroke="#ffffff" stroke-width="1.5"/>
+<text x="621.6666666666666" y="193" font-family="Helvetica, Arial, sans-serif" font-size="15" fill="#ffffff" font-weight="bold" font-style="normal" text-anchor="middle">γ</text>
+<rect x="60.0" y="168" width="14.977777777777774" height="40" rx="0" fill="#eceef1" stroke="none" stroke-width="1"/>
+<line x1="60.0" y1="212" x2="60.0" y2="217" stroke="#5b6270" stroke-width="1"/>
+<text x="60.0" y="229" font-family="Helvetica, Arial, sans-serif" font-size="9" fill="#5b6270" font-weight="normal" font-style="normal" text-anchor="middle">0</text>
+<line x1="134.88888888888889" y1="212" x2="134.88888888888889" y2="217" stroke="#5b6270" stroke-width="1"/>
+<text x="134.88888888888889" y="229" font-family="Helvetica, Arial, sans-serif" font-size="9" fill="#5b6270" font-weight="normal" font-style="normal" text-anchor="middle">5</text>
+<line x1="209.77777777777777" y1="212" x2="209.77777777777777" y2="217" stroke="#5b6270" stroke-width="1"/>
+<text x="209.77777777777777" y="229" font-family="Helvetica, Arial, sans-serif" font-size="9" fill="#5b6270" font-weight="normal" font-style="normal" text-anchor="middle">10</text>
+<line x1="284.66666666666663" y1="212" x2="284.66666666666663" y2="217" stroke="#5b6270" stroke-width="1"/>
+<text x="284.66666666666663" y="229" font-family="Helvetica, Arial, sans-serif" font-size="9" fill="#5b6270" font-weight="normal" font-style="normal" text-anchor="middle">15</text>
+<line x1="359.55555555555554" y1="212" x2="359.55555555555554" y2="217" stroke="#5b6270" stroke-width="1"/>
+<text x="359.55555555555554" y="229" font-family="Helvetica, Arial, sans-serif" font-size="9" fill="#5b6270" font-weight="normal" font-style="normal" text-anchor="middle">20</text>
+<line x1="434.44444444444446" y1="212" x2="434.44444444444446" y2="217" stroke="#5b6270" stroke-width="1"/>
+<text x="434.44444444444446" y="229" font-family="Helvetica, Arial, sans-serif" font-size="9" fill="#5b6270" font-weight="normal" font-style="normal" text-anchor="middle">25</text>
+<line x1="509.3333333333333" y1="212" x2="509.3333333333333" y2="217" stroke="#5b6270" stroke-width="1"/>
+<text x="509.3333333333333" y="229" font-family="Helvetica, Arial, sans-serif" font-size="9" fill="#5b6270" font-weight="normal" font-style="normal" text-anchor="middle">30</text>
+<line x1="584.2222222222222" y1="212" x2="584.2222222222222" y2="217" stroke="#5b6270" stroke-width="1"/>
+<text x="584.2222222222222" y="229" font-family="Helvetica, Arial, sans-serif" font-size="9" fill="#5b6270" font-weight="normal" font-style="normal" text-anchor="middle">35</text>
+<line x1="659.1111111111111" y1="212" x2="659.1111111111111" y2="217" stroke="#5b6270" stroke-width="1"/>
+<text x="659.1111111111111" y="229" font-family="Helvetica, Arial, sans-serif" font-size="9" fill="#5b6270" font-weight="normal" font-style="normal" text-anchor="middle">40</text>
+<line x1="734.0" y1="212" x2="734.0" y2="217" stroke="#5b6270" stroke-width="1"/>
+<text x="734.0" y="229" font-family="Helvetica, Arial, sans-serif" font-size="9" fill="#5b6270" font-weight="normal" font-style="normal" text-anchor="middle">45</text>
+<text x="734" y="242" font-family="Helvetica, Arial, sans-serif" font-size="9" fill="#8a909c" font-weight="normal" font-style="normal" text-anchor="end">Hz  (γ stops at 45 Hz to stay clear of 50 Hz mains)</text>
+<rect x="60" y="262" width="126" height="92" rx="6" fill="#f6f7f9" stroke="none" stroke-width="1"/>
+<rect x="60" y="262" width="4" height="92" rx="0" fill="#8a6cf0" stroke="none" stroke-width="1"/>
+<text x="72" y="286" font-family="Helvetica, Arial, sans-serif" font-size="20" fill="#8a6cf0" font-weight="bold" font-style="normal" text-anchor="start">δ</text>
+<text x="94" y="279" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#1d2129" font-weight="bold" font-style="normal" text-anchor="start">Delta</text>
+<text x="94" y="291" font-family="Helvetica, Arial, sans-serif" font-size="9.5" fill="#5b6270" font-weight="normal" font-style="normal" text-anchor="start">1–4 Hz</text>
+<text x="72" y="312" font-family="Helvetica, Arial, sans-serif" font-size="9.5" fill="#1d2129" font-weight="normal" font-style="normal" text-anchor="start">Deep sleep.</text>
+<text x="72" y="325" font-family="Helvetica, Arial, sans-serif" font-size="9.5" fill="#1d2129" font-weight="normal" font-style="normal" text-anchor="start">Awake: mostly blink</text>
+<text x="72" y="338" font-family="Helvetica, Arial, sans-serif" font-size="9.5" fill="#1d2129" font-weight="normal" font-style="normal" text-anchor="start">&amp; movement artifact.</text>
+<rect x="197" y="262" width="126" height="92" rx="6" fill="#f6f7f9" stroke="none" stroke-width="1"/>
+<rect x="197" y="262" width="4" height="92" rx="0" fill="#3f8fe0" stroke="none" stroke-width="1"/>
+<text x="209" y="286" font-family="Helvetica, Arial, sans-serif" font-size="20" fill="#3f8fe0" font-weight="bold" font-style="normal" text-anchor="start">θ</text>
+<text x="231" y="279" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#1d2129" font-weight="bold" font-style="normal" text-anchor="start">Theta</text>
+<text x="231" y="291" font-family="Helvetica, Arial, sans-serif" font-size="9.5" fill="#5b6270" font-weight="normal" font-style="normal" text-anchor="start">4–8 Hz</text>
+<text x="209" y="312" font-family="Helvetica, Arial, sans-serif" font-size="9.5" fill="#1d2129" font-weight="normal" font-style="normal" text-anchor="start">Drowsiness, deep</text>
+<text x="209" y="325" font-family="Helvetica, Arial, sans-serif" font-size="9.5" fill="#1d2129" font-weight="normal" font-style="normal" text-anchor="start">meditation, memory.</text>
+<text x="209" y="338" font-family="Helvetica, Arial, sans-serif" font-size="9.5" fill="#1d2129" font-weight="normal" font-style="normal" text-anchor="start">Frontal θ = focus.</text>
+<rect x="334" y="262" width="126" height="92" rx="6" fill="#f6f7f9" stroke="none" stroke-width="1"/>
+<rect x="334" y="262" width="4" height="92" rx="0" fill="#2fb57e" stroke="none" stroke-width="1"/>
+<text x="346" y="286" font-family="Helvetica, Arial, sans-serif" font-size="20" fill="#2fb57e" font-weight="bold" font-style="normal" text-anchor="start">α</text>
+<text x="368" y="279" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#1d2129" font-weight="bold" font-style="normal" text-anchor="start">Alpha</text>
+<text x="368" y="291" font-family="Helvetica, Arial, sans-serif" font-size="9.5" fill="#5b6270" font-weight="normal" font-style="normal" text-anchor="start">8–12 Hz</text>
+<text x="346" y="312" font-family="Helvetica, Arial, sans-serif" font-size="9.5" fill="#1d2129" font-weight="normal" font-style="normal" text-anchor="start">Relaxed wakefulness;</text>
+<text x="346" y="325" font-family="Helvetica, Arial, sans-serif" font-size="9.5" fill="#1d2129" font-weight="normal" font-style="normal" text-anchor="start">strongest with eyes</text>
+<text x="346" y="338" font-family="Helvetica, Arial, sans-serif" font-size="9.5" fill="#1d2129" font-weight="normal" font-style="normal" text-anchor="start">closed, at the back.</text>
+<rect x="471" y="262" width="126" height="92" rx="6" fill="#f6f7f9" stroke="none" stroke-width="1"/>
+<rect x="471" y="262" width="4" height="92" rx="0" fill="#e0603e" stroke="none" stroke-width="1"/>
+<text x="483" y="286" font-family="Helvetica, Arial, sans-serif" font-size="20" fill="#e0603e" font-weight="bold" font-style="normal" text-anchor="start">β</text>
+<text x="505" y="279" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#1d2129" font-weight="bold" font-style="normal" text-anchor="start">Beta</text>
+<text x="505" y="291" font-family="Helvetica, Arial, sans-serif" font-size="9.5" fill="#5b6270" font-weight="normal" font-style="normal" text-anchor="start">12–30 Hz</text>
+<text x="483" y="312" font-family="Helvetica, Arial, sans-serif" font-size="9.5" fill="#1d2129" font-weight="normal" font-style="normal" text-anchor="start">Alert, busy mind,</text>
+<text x="483" y="325" font-family="Helvetica, Arial, sans-serif" font-size="9.5" fill="#1d2129" font-weight="normal" font-style="normal" text-anchor="start">mental effort,</text>
+<text x="483" y="338" font-family="Helvetica, Arial, sans-serif" font-size="9.5" fill="#1d2129" font-weight="normal" font-style="normal" text-anchor="start">muscle tension.</text>
+<rect x="608" y="262" width="126" height="92" rx="6" fill="#f6f7f9" stroke="none" stroke-width="1"/>
+<rect x="608" y="262" width="4" height="92" rx="0" fill="#c94aa8" stroke="none" stroke-width="1"/>
+<text x="620" y="286" font-family="Helvetica, Arial, sans-serif" font-size="20" fill="#c94aa8" font-weight="bold" font-style="normal" text-anchor="start">γ</text>
+<text x="642" y="279" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#1d2129" font-weight="bold" font-style="normal" text-anchor="start">Gamma</text>
+<text x="642" y="291" font-family="Helvetica, Arial, sans-serif" font-size="9.5" fill="#5b6270" font-weight="normal" font-style="normal" text-anchor="start">30–45 Hz</text>
+<text x="620" y="312" font-family="Helvetica, Arial, sans-serif" font-size="9.5" fill="#1d2129" font-weight="normal" font-style="normal" text-anchor="start">Cognitive binding;</text>
+<text x="620" y="325" font-family="Helvetica, Arial, sans-serif" font-size="9.5" fill="#1d2129" font-weight="normal" font-style="normal" text-anchor="start">on scalp EEG mostly</text>
+<text x="620" y="338" font-family="Helvetica, Arial, sans-serif" font-size="9.5" fill="#1d2129" font-weight="normal" font-style="normal" text-anchor="start">muscle artifact.</text>
+<text x="60" y="378" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#2f8f5b" font-weight="bold" font-style="normal" text-anchor="start">2  THE EIGHT METRICS  (keys 1–8 in the HUD)</text>
+<text x="64" y="402" font-family="Helvetica, Arial, sans-serif" font-size="9" fill="#8a909c" font-weight="bold" font-style="normal" text-anchor="start">#</text>
+<text x="94" y="402" font-family="Helvetica, Arial, sans-serif" font-size="9" fill="#8a909c" font-weight="bold" font-style="normal" text-anchor="start">RATIO</text>
+<text x="254" y="402" font-family="Helvetica, Arial, sans-serif" font-size="9" fill="#8a909c" font-weight="bold" font-style="normal" text-anchor="start">WHEN RELAXING</text>
+<text x="354" y="402" font-family="Helvetica, Arial, sans-serif" font-size="9" fill="#8a909c" font-weight="bold" font-style="normal" text-anchor="start">WHAT IT MEANS</text>
+<line x1="60" y1="409" x2="734" y2="409" stroke="#1d2129" stroke-width="1"/>
+<circle cx="72" cy="434.5" r="10" fill="#1d2129"/>
+<text x="72" y="438.5" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#ffffff" font-weight="bold" font-style="normal" text-anchor="middle">1</text>
+<text x="94" y="433" font-family="Helvetica, Arial, sans-serif" font-size="15" fill="#1d2129" font-weight="bold" font-style="normal" text-anchor="start">α / β</text>
+<text x="94" y="447" font-family="Helvetica, Arial, sans-serif" font-size="9.5" fill="#5b6270" font-weight="normal" font-style="normal" text-anchor="start">Alpha / Beta</text>
+<rect x="254" y="423" width="52" height="16" rx="8" fill="#2f8f5b" stroke="none" stroke-width="1"/>
+<text x="280" y="434.5" font-family="Helvetica, Arial, sans-serif" font-size="8.5" fill="#ffffff" font-weight="bold" font-style="normal" text-anchor="middle">RISES</text>
+<text x="354" y="431" font-family="Helvetica, Arial, sans-serif" font-size="10" fill="#1d2129" font-weight="normal" font-style="normal" text-anchor="start">Relaxed vs. engaged: alpha grows and beta falls as effort and tension drop.</text>
+<text x="354" y="445" font-family="Helvetica, Arial, sans-serif" font-size="9.5" fill="#5b6270" font-weight="normal" font-style="italic" text-anchor="start">Simple and intuitive; closing the eyes alone boosts alpha strongly.</text>
+<line x1="60" y1="457" x2="734" y2="457" stroke="#d9dce2" stroke-width="1"/>
+<rect x="60" y="457" width="674" height="45" rx="0" fill="#eaf6ef" stroke="none" stroke-width="1"/>
+<circle cx="72" cy="479.5" r="10" fill="#2f8f5b"/>
+<text x="72" y="483.5" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#ffffff" font-weight="bold" font-style="normal" text-anchor="middle">2</text>
+<text x="94" y="478" font-family="Helvetica, Arial, sans-serif" font-size="15" fill="#1d2129" font-weight="bold" font-style="normal" text-anchor="start">(α + θ) / β</text>
+<text x="94" y="492" font-family="Helvetica, Arial, sans-serif" font-size="9.5" fill="#5b6270" font-weight="normal" font-style="normal" text-anchor="start">(Alpha + Theta) / Beta</text>
+<rect x="254" y="468" width="52" height="16" rx="8" fill="#2f8f5b" stroke="none" stroke-width="1"/>
+<text x="280" y="479.5" font-family="Helvetica, Arial, sans-serif" font-size="8.5" fill="#ffffff" font-weight="bold" font-style="normal" text-anchor="middle">RISES</text>
+<text x="280" y="495" font-family="Helvetica, Arial, sans-serif" font-size="8.5" fill="#2f8f5b" font-weight="bold" font-style="normal" text-anchor="middle">default</text>
+<text x="354" y="476" font-family="Helvetica, Arial, sans-serif" font-size="10" fill="#1d2129" font-weight="normal" font-style="normal" text-anchor="start">Relaxation deepening toward meditation: calm alpha and slow theta over beta.</text>
+<text x="354" y="490" font-family="Helvetica, Arial, sans-serif" font-size="9.5" fill="#5b6270" font-weight="normal" font-style="italic" text-anchor="start">Classic alpha–theta neurofeedback ratio; also rises if the user gets drowsy.</text>
+<line x1="60" y1="502" x2="734" y2="502" stroke="#d9dce2" stroke-width="1"/>
+<circle cx="72" cy="524.5" r="10" fill="#1d2129"/>
+<text x="72" y="528.5" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#ffffff" font-weight="bold" font-style="normal" text-anchor="middle">3</text>
+<text x="94" y="523" font-family="Helvetica, Arial, sans-serif" font-size="15" fill="#1d2129" font-weight="bold" font-style="normal" text-anchor="start">α / total</text>
+<text x="94" y="537" font-family="Helvetica, Arial, sans-serif" font-size="9.5" fill="#5b6270" font-weight="normal" font-style="normal" text-anchor="start">Relative Alpha</text>
+<rect x="254" y="513" width="52" height="16" rx="8" fill="#2f8f5b" stroke="none" stroke-width="1"/>
+<text x="280" y="524.5" font-family="Helvetica, Arial, sans-serif" font-size="8.5" fill="#ffffff" font-weight="bold" font-style="normal" text-anchor="middle">RISES</text>
+<text x="354" y="521" font-family="Helvetica, Arial, sans-serif" font-size="10" fill="#1d2129" font-weight="normal" font-style="normal" text-anchor="start">Share of all EEG power that is alpha; ignores overall amplitude (contact, gain).</text>
+<text x="354" y="535" font-family="Helvetica, Arial, sans-serif" font-size="9.5" fill="#5b6270" font-weight="normal" font-style="italic" text-anchor="start">Blinks and movement add delta to the total and pull it down.</text>
+<line x1="60" y1="547" x2="734" y2="547" stroke="#d9dce2" stroke-width="1"/>
+<rect x="60" y="547" width="674" height="45" rx="0" fill="#f8f9fa" stroke="none" stroke-width="1"/>
+<circle cx="72" cy="569.5" r="10" fill="#1d2129"/>
+<text x="72" y="573.5" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#ffffff" font-weight="bold" font-style="normal" text-anchor="middle">4</text>
+<text x="94" y="568" font-family="Helvetica, Arial, sans-serif" font-size="15" fill="#1d2129" font-weight="bold" font-style="normal" text-anchor="start">α / (θ + β)</text>
+<text x="94" y="582" font-family="Helvetica, Arial, sans-serif" font-size="9.5" fill="#5b6270" font-weight="normal" font-style="normal" text-anchor="start">Alpha / (Theta + Beta)</text>
+<rect x="254" y="558" width="52" height="16" rx="8" fill="#2f8f5b" stroke="none" stroke-width="1"/>
+<text x="280" y="569.5" font-family="Helvetica, Arial, sans-serif" font-size="8.5" fill="#ffffff" font-weight="bold" font-style="normal" text-anchor="middle">RISES</text>
+<text x="354" y="566" font-family="Helvetica, Arial, sans-serif" font-size="10" fill="#1d2129" font-weight="normal" font-style="normal" text-anchor="start">Calm but awake: rewards alpha, penalises both tension (β) and drowsiness (θ).</text>
+<text x="354" y="580" font-family="Helvetica, Arial, sans-serif" font-size="9.5" fill="#5b6270" font-weight="normal" font-style="italic" text-anchor="start">Strictest score; use when falling asleep must not count as relaxing.</text>
+<line x1="60" y1="592" x2="734" y2="592" stroke="#d9dce2" stroke-width="1"/>
+<circle cx="72" cy="614.5" r="10" fill="#1d2129"/>
+<text x="72" y="618.5" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#ffffff" font-weight="bold" font-style="normal" text-anchor="middle">5</text>
+<text x="94" y="613" font-family="Helvetica, Arial, sans-serif" font-size="15" fill="#1d2129" font-weight="bold" font-style="normal" text-anchor="start">(α + 0.5θ) / β</text>
+<text x="94" y="627" font-family="Helvetica, Arial, sans-serif" font-size="9.5" fill="#5b6270" font-weight="normal" font-style="normal" text-anchor="start">Relaxation Score</text>
+<rect x="254" y="603" width="52" height="16" rx="8" fill="#2f8f5b" stroke="none" stroke-width="1"/>
+<text x="280" y="614.5" font-family="Helvetica, Arial, sans-serif" font-size="8.5" fill="#ffffff" font-weight="bold" font-style="normal" text-anchor="middle">RISES</text>
+<text x="354" y="611" font-family="Helvetica, Arial, sans-serif" font-size="10" fill="#1d2129" font-weight="normal" font-style="normal" text-anchor="start">Middle ground between 1 and 2: theta counts half, so drowsiness helps less.</text>
+<text x="354" y="625" font-family="Helvetica, Arial, sans-serif" font-size="9.5" fill="#5b6270" font-weight="normal" font-style="italic" text-anchor="start">The 0.5 weighting is a heuristic, not a published standard.</text>
+<line x1="60" y1="637" x2="734" y2="637" stroke="#d9dce2" stroke-width="1"/>
+<rect x="60" y="637" width="674" height="45" rx="0" fill="#f8f9fa" stroke="none" stroke-width="1"/>
+<circle cx="72" cy="659.5" r="10" fill="#1d2129"/>
+<text x="72" y="663.5" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#ffffff" font-weight="bold" font-style="normal" text-anchor="middle">6</text>
+<text x="94" y="658" font-family="Helvetica, Arial, sans-serif" font-size="15" fill="#1d2129" font-weight="bold" font-style="normal" text-anchor="start">θ at Fz</text>
+<text x="94" y="672" font-family="Helvetica, Arial, sans-serif" font-size="9.5" fill="#5b6270" font-weight="normal" font-style="normal" text-anchor="start">Frontal Theta</text>
+<rect x="254" y="648" width="52" height="16" rx="8" fill="#2f8f5b" stroke="none" stroke-width="1"/>
+<text x="280" y="659.5" font-family="Helvetica, Arial, sans-serif" font-size="8.5" fill="#ffffff" font-weight="bold" font-style="normal" text-anchor="middle">RISES</text>
+<text x="280" y="675" font-family="Helvetica, Arial, sans-serif" font-size="8.5" fill="#5b6270" font-weight="normal" font-style="normal" text-anchor="middle">with focus</text>
+<text x="354" y="656" font-family="Helvetica, Arial, sans-serif" font-size="10" fill="#1d2129" font-weight="normal" font-style="normal" text-anchor="start">Frontal-midline theta: marker of sustained inward attention (focused meditation).</text>
+<text x="354" y="670" font-family="Helvetica, Arial, sans-serif" font-size="9.5" fill="#5b6270" font-weight="normal" font-style="italic" text-anchor="start">Absolute power at one electrode, not a ratio: sensitive to contact quality.</text>
+<line x1="60" y1="682" x2="734" y2="682" stroke="#d9dce2" stroke-width="1"/>
+<circle cx="72" cy="704.5" r="10" fill="#1d2129"/>
+<text x="72" y="708.5" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#ffffff" font-weight="bold" font-style="normal" text-anchor="middle">7</text>
+<text x="94" y="703" font-family="Helvetica, Arial, sans-serif" font-size="15" fill="#1d2129" font-weight="bold" font-style="normal" text-anchor="start">θ / α</text>
+<text x="94" y="717" font-family="Helvetica, Arial, sans-serif" font-size="9.5" fill="#5b6270" font-weight="normal" font-style="normal" text-anchor="start">Theta / Alpha</text>
+<rect x="254" y="693" width="52" height="16" rx="8" fill="#2f8f5b" stroke="none" stroke-width="1"/>
+<text x="280" y="704.5" font-family="Helvetica, Arial, sans-serif" font-size="8.5" fill="#ffffff" font-weight="bold" font-style="normal" text-anchor="middle">RISES</text>
+<text x="280" y="720" font-family="Helvetica, Arial, sans-serif" font-size="8.5" fill="#5b6270" font-weight="normal" font-style="normal" text-anchor="middle">when drowsy</text>
+<text x="354" y="701" font-family="Helvetica, Arial, sans-serif" font-size="10" fill="#1d2129" font-weight="normal" font-style="normal" text-anchor="start">Shift from relaxed wakefulness toward sleep onset or very deep meditation.</text>
+<text x="354" y="715" font-family="Helvetica, Arial, sans-serif" font-size="9.5" fill="#5b6270" font-weight="normal" font-style="italic" text-anchor="start">Cannot tell deep meditation from dozing off; best as a drowsiness monitor.</text>
+<line x1="60" y1="727" x2="734" y2="727" stroke="#d9dce2" stroke-width="1"/>
+<rect x="60" y="727" width="674" height="45" rx="0" fill="#f8f9fa" stroke="none" stroke-width="1"/>
+<circle cx="72" cy="749.5" r="10" fill="#1d2129"/>
+<text x="72" y="753.5" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#ffffff" font-weight="bold" font-style="normal" text-anchor="middle">8</text>
+<text x="94" y="748" font-family="Helvetica, Arial, sans-serif" font-size="15" fill="#1d2129" font-weight="bold" font-style="normal" text-anchor="start">θ / β</text>
+<text x="94" y="762" font-family="Helvetica, Arial, sans-serif" font-size="9.5" fill="#5b6270" font-weight="normal" font-style="normal" text-anchor="start">Theta / Beta</text>
+<rect x="254" y="738" width="52" height="16" rx="8" fill="#b0782a" stroke="none" stroke-width="1"/>
+<text x="280" y="749.5" font-family="Helvetica, Arial, sans-serif" font-size="8.5" fill="#ffffff" font-weight="bold" font-style="normal" text-anchor="middle">MIXED</text>
+<text x="354" y="746" font-family="Helvetica, Arial, sans-serif" font-size="10" fill="#1d2129" font-weight="normal" font-style="normal" text-anchor="start">Classic attention marker (high = low alert arousal), used in ADHD neurofeedback.</text>
+<text x="354" y="760" font-family="Helvetica, Arial, sans-serif" font-size="9.5" fill="#5b6270" font-weight="normal" font-style="italic" text-anchor="start">Not meditation-specific; mixes relaxation with inattention.</text>
+<line x1="60" y1="772" x2="734" y2="772" stroke="#d9dce2" stroke-width="1"/>
+<text x="60" y="810" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#2f8f5b" font-weight="bold" font-style="normal" text-anchor="start">3  FROM SIGNAL TO TREE</text>
+<rect x="60" y="826" width="84" height="62" rx="6" fill="#f6f7f9" stroke="#d9dce2" stroke-width="1"/>
+<text x="102.0" y="846" font-family="Helvetica, Arial, sans-serif" font-size="10.5" fill="#1d2129" font-weight="bold" font-style="normal" text-anchor="middle">Raw EEG</text>
+<text x="102.0" y="862" font-family="Helvetica, Arial, sans-serif" font-size="8.5" fill="#5b6270" font-weight="normal" font-style="normal" text-anchor="middle">8 ch · 250 Hz</text>
+<text x="102.0" y="874" font-family="Helvetica, Arial, sans-serif" font-size="8.5" fill="#5b6270" font-weight="normal" font-style="normal" text-anchor="middle">µV</text>
+<path d="M146 857 h8 m-4 -4 l4 4 l-4 4" fill="none" stroke="#5b6270" stroke-width="1.3"/>
+<rect x="158" y="826" width="84" height="62" rx="6" fill="#f6f7f9" stroke="#d9dce2" stroke-width="1"/>
+<text x="200.0" y="846" font-family="Helvetica, Arial, sans-serif" font-size="10.5" fill="#1d2129" font-weight="bold" font-style="normal" text-anchor="middle">FFT</text>
+<text x="200.0" y="862" font-family="Helvetica, Arial, sans-serif" font-size="8.5" fill="#5b6270" font-weight="normal" font-style="normal" text-anchor="middle">2 s window</text>
+<text x="200.0" y="874" font-family="Helvetica, Arial, sans-serif" font-size="8.5" fill="#5b6270" font-weight="normal" font-style="normal" text-anchor="middle">10 × per s</text>
+<path d="M244 857 h8 m-4 -4 l4 4 l-4 4" fill="none" stroke="#5b6270" stroke-width="1.3"/>
+<rect x="256" y="826" width="84" height="62" rx="6" fill="#f6f7f9" stroke="#d9dce2" stroke-width="1"/>
+<text x="298.0" y="846" font-family="Helvetica, Arial, sans-serif" font-size="10.5" fill="#1d2129" font-weight="bold" font-style="normal" text-anchor="middle">Band power</text>
+<text x="298.0" y="862" font-family="Helvetica, Arial, sans-serif" font-size="8.5" fill="#5b6270" font-weight="normal" font-style="normal" text-anchor="middle">δ … γ, mean</text>
+<text x="298.0" y="874" font-family="Helvetica, Arial, sans-serif" font-size="8.5" fill="#5b6270" font-weight="normal" font-style="normal" text-anchor="middle">of 8 channels</text>
+<path d="M342 857 h8 m-4 -4 l4 4 l-4 4" fill="none" stroke="#5b6270" stroke-width="1.3"/>
+<rect x="354" y="826" width="84" height="62" rx="6" fill="#f6f7f9" stroke="#d9dce2" stroke-width="1"/>
+<text x="396.0" y="846" font-family="Helvetica, Arial, sans-serif" font-size="10.5" fill="#1d2129" font-weight="bold" font-style="normal" text-anchor="middle">Ratio</text>
+<text x="396.0" y="862" font-family="Helvetica, Arial, sans-serif" font-size="8.5" fill="#5b6270" font-weight="normal" font-style="normal" text-anchor="middle">selected</text>
+<text x="396.0" y="874" font-family="Helvetica, Arial, sans-serif" font-size="8.5" fill="#5b6270" font-weight="normal" font-style="normal" text-anchor="middle">metric 1–8</text>
+<path d="M440 857 h8 m-4 -4 l4 4 l-4 4" fill="none" stroke="#5b6270" stroke-width="1.3"/>
+<rect x="452" y="826" width="84" height="62" rx="6" fill="#f6f7f9" stroke="#d9dce2" stroke-width="1"/>
+<text x="494.0" y="846" font-family="Helvetica, Arial, sans-serif" font-size="10.5" fill="#1d2129" font-weight="bold" font-style="normal" text-anchor="middle">z-score</text>
+<text x="494.0" y="862" font-family="Helvetica, Arial, sans-serif" font-size="8.5" fill="#5b6270" font-weight="normal" font-style="normal" text-anchor="middle">vs. own 30 s</text>
+<text x="494.0" y="874" font-family="Helvetica, Arial, sans-serif" font-size="8.5" fill="#5b6270" font-weight="normal" font-style="normal" text-anchor="middle">rest baseline</text>
+<path d="M538 857 h8 m-4 -4 l4 4 l-4 4" fill="none" stroke="#5b6270" stroke-width="1.3"/>
+<rect x="550" y="826" width="84" height="62" rx="6" fill="#f6f7f9" stroke="#d9dce2" stroke-width="1"/>
+<text x="592.0" y="846" font-family="Helvetica, Arial, sans-serif" font-size="10.5" fill="#1d2129" font-weight="bold" font-style="normal" text-anchor="middle">Relaxation</text>
+<text x="592.0" y="862" font-family="Helvetica, Arial, sans-serif" font-size="8.5" fill="#5b6270" font-weight="normal" font-style="normal" text-anchor="middle">z -0.5 → 0</text>
+<text x="592.0" y="874" font-family="Helvetica, Arial, sans-serif" font-size="8.5" fill="#5b6270" font-weight="normal" font-style="normal" text-anchor="middle">z +2 → 1</text>
+<path d="M636 857 h8 m-4 -4 l4 4 l-4 4" fill="none" stroke="#5b6270" stroke-width="1.3"/>
+<rect x="648" y="826" width="84" height="62" rx="6" fill="#eaf6ef" stroke="#2f8f5b" stroke-width="1"/>
+<text x="690.0" y="846" font-family="Helvetica, Arial, sans-serif" font-size="10.5" fill="#1d2129" font-weight="bold" font-style="normal" text-anchor="middle">Tree growth</text>
+<text x="690.0" y="862" font-family="Helvetica, Arial, sans-serif" font-size="8.5" fill="#5b6270" font-weight="normal" font-style="normal" text-anchor="middle">grows above 0.25</text>
+<text x="690.0" y="874" font-family="Helvetica, Arial, sans-serif" font-size="8.5" fill="#5b6270" font-weight="normal" font-style="normal" text-anchor="middle">pauses below</text>
+<text x="60" y="906" font-family="Helvetica, Arial, sans-serif" font-size="9" fill="#8a909c" font-weight="normal" font-style="normal" text-anchor="start">Smoothed over 1.5 s and blended over 0.75 s when switching metric, so the tree never jumps.</text>
+<text x="60" y="938" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#2f8f5b" font-weight="bold" font-style="normal" text-anchor="start">4  READING THE NUMBERS</text>
+<circle cx="64" cy="956" r="2.5" fill="#2f8f5b"/>
+<text x="74" y="960" font-family="Helvetica, Arial, sans-serif" font-size="10" fill="#5b6270"><tspan font-weight="bold" fill="#1d2129">Only relative values count.</tspan> Absolute ratios differ between people, sessions and electrode contact; that is why every</text>
+<text x="74" y="974" font-family="Helvetica, Arial, sans-serif" font-size="10" fill="#5b6270" font-weight="normal" font-style="normal" text-anchor="start">metric is z-scored against the participant's own baseline.</text>
+<circle cx="64" cy="993" r="2.5" fill="#2f8f5b"/>
+<text x="74" y="997" font-family="Helvetica, Arial, sans-serif" font-size="10" fill="#5b6270"><tspan font-weight="bold" fill="#1d2129">Artifacts mimic states.</tspan> Eyes closed → α up. Blinks or head movement → δ up. Jaw clench or frown → β and γ up (looks</text>
+<text x="74" y="1011" font-family="Helvetica, Arial, sans-serif" font-size="10" fill="#5b6270" font-weight="normal" font-style="normal" text-anchor="start">like tension). Poor contact → flat line or 50 Hz hum.</text>
+<circle cx="64" cy="1030" r="2.5" fill="#2f8f5b"/>
+<text x="74" y="1034" font-family="Helvetica, Arial, sans-serif" font-size="10" fill="#5b6270"><tspan font-weight="bold" fill="#1d2129">Picking a metric.</tspan> Start with 2, (α+θ)/β. Switch to 4 if participants drift off to sleep, or to 6 for focused-attention</text>
+<text x="74" y="1048" font-family="Helvetica, Arial, sans-serif" font-size="10" fill="#5b6270" font-weight="normal" font-style="normal" text-anchor="start">meditation.</text>
+<line x1="60" y1="1079" x2="734" y2="1079" stroke="#d9dce2" stroke-width="1"/>
+<text x="60" y="1095" font-family="Helvetica, Arial, sans-serif" font-size="8.5" fill="#8a909c" font-weight="normal" font-style="normal" text-anchor="start">Source: Assets/Relaxation/RelaxationMetrics.cs · RawEegProcessor.cs · RelaxationTreeDriver.cs</text>
+<text x="734" y="1095" font-family="Helvetica, Arial, sans-serif" font-size="8.5" fill="#8a909c" font-weight="normal" font-style="normal" text-anchor="end">MyHackathonHorror</text>
+</svg>
