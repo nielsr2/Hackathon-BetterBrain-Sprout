@@ -15,8 +15,11 @@ Made for the [g.tec IEEE SMC 2026 BCI Hackathon](https://gtec.at/hackathon/ieee-
 
 ## How it works
 
-The film uses **passive control**. You don't steer anything on purpose. The tree responds to
-your brain state, read from the EEG.
+The film uses the EEG in two ways: **passive control** and **active control**.
+
+### Passive control: growing the tree
+
+You don't steer anything on purpose. The tree responds to your brain state.
 
 1. **Band power.** The g.tec Unicorn records 8 EEG channels at 250 Hz. Ten times a second we
    take the last 2 s of each channel, remove the trend, apply a Hann window and an FFT, and add
@@ -35,7 +38,17 @@ your brain state, read from the EEG.
    the tree's *growth rate*. When you are relaxed the tree grows; when you are tense it
    pauses.
 
+### Active control: ERP
+
+At some point you will have to steer on purpose, using the ERP paradigm from **g.tec's
+Unity package**. A short calibration at the start trains it on your own brain responses to
+flashing symbols.
+
 ## Running it
+
+**Just want to try it?** Download the Windows build from
+[Releases](https://github.com/nielsr2/Hackathon-BetterBrain-Sprout/releases), unzip it and run
+`MyHackathonHorror.exe`. You still need a Unicorn headset (or F9 for debug mode).
 
 **You need:**
 
@@ -49,13 +62,13 @@ your brain state, read from the EEG.
 1. Clone the repo with Git LFS installed. The videos and textures are stored in LFS.
 2. Open the repo root in Unity Hub. The first import rebuilds `Library/` and takes a while.
 3. Open `Assets/Session/oak_session.unity` and press Play.
-4. Connect the Unicorn from the g.tec bar and follow the on-screen steps: calibration,
-   baseline, then relax and grow your sprout.
+4. Connect the Unicorn from the g.tec bar and follow the on-screen steps: the flash
+   calibration, the resting baseline, then relax and grow your sprout.
 
 **No headset?** Press **F9** for debug mode. It uses a simulated EEG signal and speeds up
 growth; `[` and `]` change the speed. Press **N** to skip the current step.
 
 ## Credits
 
-Built at the g.tec IEEE SMC 2026 hackathon. EEG acquisition uses g.tec's Unicorn Unity
-package.
+Built at the g.tec IEEE SMC 2026 hackathon. EEG acquisition, the flash paradigm and the ERP
+classifier come from g.tec's Unicorn Unity package.

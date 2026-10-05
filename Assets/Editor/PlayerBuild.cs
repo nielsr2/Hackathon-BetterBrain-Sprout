@@ -14,7 +14,13 @@ public static class PlayerBuild
     const string SessionScene = "Assets/Session/oak_session.unity";
 
     [MenuItem("Tools/Build/Windows Player")]
-    public static void BuildWindows()
+    public static void BuildWindows() => Build(BuildOptions.None);
+
+    /// <summary>Development build: script debugging info and a fuller Player.log, for tracking down crashes.</summary>
+    [MenuItem("Tools/Build/Windows Player (Development)")]
+    public static void BuildWindowsDevelopment() => Build(BuildOptions.Development);
+
+    static void Build(BuildOptions buildOptions)
     {
         var options = new BuildPlayerOptions
         {
@@ -22,7 +28,7 @@ public static class PlayerBuild
             locationPathName = $"{OutputFolder}/{PlayerSettings.productName}.exe",
             target = BuildTarget.StandaloneWindows64,
             targetGroup = BuildTargetGroup.Standalone,
-            options = BuildOptions.None,
+            options = buildOptions,
         };
         if (System.IO.Directory.Exists(OutputFolder)) FileUtil.DeleteFileOrDirectory(OutputFolder);
 
