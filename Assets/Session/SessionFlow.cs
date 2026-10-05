@@ -171,6 +171,7 @@ public sealed class SessionFlow : MonoBehaviour
 
     void Start()
     {
+        Debug.Log($"[Session] Build {BuildInfo.Number}");
         if (sync != null) sync.ShowUi(false);
         UseSyncCamera(false);
         StartCoroutine(Run());
@@ -218,7 +219,7 @@ public sealed class SessionFlow : MonoBehaviour
         {
             _debugLabel.enabled = debugMode;
             if (debugMode)
-                _debugLabel.text = $"DEBUG  simulated EEG ({(debugAutoRelax ? "auto relax" : "hold Space")})  ×{debugSpeed:0.#}   " +
+                _debugLabel.text = $"BUILD {BuildInfo.Number}  DEBUG  simulated EEG ({(debugAutoRelax ? "auto relax" : "hold Space")})  ×{debugSpeed:0.#}   " +
                                    $"[{KeyName(speedDownKey)}] [{KeyName(speedUpKey)}] speed   {debugToggleKey} off   {skipKey} skip\n" +
                                    $"{phase}  growth {(driver != null ? driver.displayedGrowth : 0f):0.00} / {growthGoal:0.00}";
         }
