@@ -1987,6 +1987,7 @@ MonoBehaviour:
   syncCamera: {fileID: 1194911494}
   grownTimeline: {fileID: 443998870}
   sproutTimeline: {fileID: 623634865}
+  introClip: {fileID: 32900000, guid: e072a606a4c376041988cdffec02ef9f, type: 3}
   logoClip: {fileID: 32900000, guid: 9b2a988f2afb1dd4e82ec7893d2b3508, type: 3}
   glitchVideo: {fileID: 32900000, guid: ef6f4cf5febf8a940baa2ee181525708, type: 3}
   spookyVideo: {fileID: 32900000, guid: c93a4d8aa2a598e4998ae875b4ef80e4, type: 3}

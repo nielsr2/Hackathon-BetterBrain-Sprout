@@ -11,7 +11,7 @@ out of the ground and grows into a tree.
 
 Made for the [g.tec IEEE SMC 2026 BCI Hackathon](https://gtec.at/hackathon/ieee-smc-2026/).
 
-![session](Session_001_0308-0336_1.5x_small.gif)
+![trailer](GIF-trailer.gif)
 
 ## How it works
 

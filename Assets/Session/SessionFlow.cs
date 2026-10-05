@@ -9,6 +9,7 @@ using UnityEngine.Video;
 
 /// <summary>
 /// Runs the full session in <c>oak_session.unity</c>:
+///   Intro — the opening film (<see cref="introClip"/>), full screen over black, with sound;
 ///   Logo — morning orbit round the grown tree, the sprout logo (alpha video, no audio) on top;
 ///   Connect — fade to the sync screen, the user connects their Unicorn in the g.tec bar;
 ///   Calibrate — "INITIAL CALIBRATION": the g.tec ERP training run;
@@ -28,7 +29,7 @@ using UnityEngine.Video;
 [RequireComponent(typeof(GlitchTransition))]
 public sealed class SessionFlow : MonoBehaviour
 {
-    public enum Phase { Logo, Connect, Calibrate, Baseline, Sprout, Interactive, GlitchVideo, Spooky, Choice, Chosen, Done }
+    public enum Phase { Intro, Logo, Connect, Calibrate, Baseline, Sprout, Interactive, GlitchVideo, Spooky, Choice, Chosen, Done }
 
     [Header("References")]
     public RelaxationTreeDriver driver;
@@ -45,6 +46,8 @@ public sealed class SessionFlow : MonoBehaviour
     public PlayableDirector sproutTimeline;
 
     [Header("Videos")]
+    [Tooltip("Opening film, played full screen with sound before everything else. None: start with the logo.")]
+    public VideoClip introClip;
     [Tooltip("Transparent logo over the opening orbit; played without audio.")]
     public VideoClip logoClip;
     [Tooltip("The first glitch lands on this.")]
@@ -122,15 +125,16 @@ public sealed class SessionFlow : MonoBehaviour
         "BASELINE LOCKED",
     };
 
-    VideoPlayer _logo, _videoA, _spooky;
+    VideoPlayer _intro, _logo, _videoA, _spooky;
     readonly VideoPlayer[] _choiceVideos = new VideoPlayer[2];
     System.Collections.Generic.List<ChoiceOption> _choices = new System.Collections.Generic.List<ChoiceOption>();
     readonly string[] _choicePaths = new string[2];
     bool _skip;
     GameObject _ui;
     Image _fade;
-    RawImage _logoImage;
-    AspectRatioFitter _logoFit;
+    RawImage _logoImage, _introImage;
+    AspectRatioFitter _logoFit, _introFit;
+    Image _introBackdrop;
     Text _title, _hint, _debugLabel;
     float _baseSecondsToFull, _baseBaselineSeconds;
     bool _receiverSimulated;
@@ -249,6 +253,24 @@ public sealed class SessionFlow : MonoBehaviour
 
     IEnumerator Run()
     {
+        // ── Opening film ── (screen is black here)
+        if (introClip != null)
+        {
+            Enter(Phase.Intro);
+            _intro = CreatePlayer(introClip, "Intro", audio: true);
+            _intro.Prepare();
+            while (!_intro.isPrepared && !_skip) yield return null;
+            _introImage.texture = _intro.targetTexture;
+            _introFit.aspectRatio = (float)introClip.width / introClip.height;
+            _introBackdrop.enabled = _introImage.enabled = true;
+            _intro.Play();
+            yield return Fade(1f, 0f, fadeSeconds);
+            yield return WaitForEnd(_intro);
+            yield return Fade(0f, 1f, fadeSeconds);
+            _introBackdrop.enabled = _introImage.enabled = false;
+            DisposePlayer(ref _intro);
+        }
+
         // ── Logo over the grown tree ──
         Enter(Phase.Logo);
         Play(grownTimeline);
@@ -565,6 +587,7 @@ public sealed class SessionFlow : MonoBehaviour
 
     void OnDestroy()
     {
+        DisposePlayer(ref _intro);
         DisposePlayer(ref _logo);
         DisposePlayer(ref _videoA);
         DisposePlayer(ref _spooky);
@@ -604,6 +627,19 @@ public sealed class SessionFlow : MonoBehaviour
         group.interactable = group.blocksRaycasts = false; // never in the way of the g.tec buttons
 
         var font = Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
+
+        // Opening film: letterboxed on black so the scene behind never shows.
+        var intro = Stretch("Intro", _ui.transform);
+        _introBackdrop = intro.gameObject.AddComponent<Image>();
+        _introBackdrop.color = Color.black;
+        _introBackdrop.raycastTarget = false;
+        _introBackdrop.enabled = false;
+        var introVideo = Stretch("Intro Video", intro);
+        _introImage = introVideo.gameObject.AddComponent<RawImage>();
+        _introImage.raycastTarget = false;
+        _introImage.enabled = false;
+        _introFit = introVideo.gameObject.AddComponent<AspectRatioFitter>();
+        _introFit.aspectMode = AspectRatioFitter.AspectMode.FitInParent;
 
         var logo = Stretch("Logo", _ui.transform);
         _logoImage = logo.gameObject.AddComponent<RawImage>();

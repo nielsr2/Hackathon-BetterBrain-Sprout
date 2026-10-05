@@ -30,6 +30,7 @@ public static class SessionSceneSetup
     const string GrownPath = Folder + "/Session_GrownOrbit.playable";
     const string SproutPath = Folder + "/Session_SproutInteractive.playable";
     const string SyncVolumePath = Folder + "/SyncScreenVolume.asset";
+    const string IntroPath = "Assets/Videos/UnityPart1.mov";
     const string LogoPath = "Assets/Videos/LogoSprout.webm";
     const string GlitchVideoPath = "Assets/Videos/Film_1b_LoadingPan.mp4"; // placeholder
     const string SpookyVideoPath = "Assets/Videos/Film_1a_Orbit.mp4";      // placeholder until the spooky clip exists
@@ -149,6 +150,8 @@ public static class SessionSceneSetup
         flow.grownTimeline = grownDir;
         flow.sproutTimeline = sproutDir;
         flow.interactiveAt = 7f;
+        flow.introClip = AssetDatabase.LoadAssetAtPath<VideoClip>(IntroPath);
+        if (flow.introClip == null) Debug.LogWarning($"[Session] No intro clip at {IntroPath}; the session starts with the logo.");
         flow.logoClip = LoadLogo();
         flow.glitchVideo = AssetDatabase.LoadAssetAtPath<VideoClip>(GlitchVideoPath);
         if (flow.spookyVideo == null) flow.spookyVideo = AssetDatabase.LoadAssetAtPath<VideoClip>(SpookyVideoPath);
