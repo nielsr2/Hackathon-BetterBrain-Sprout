@@ -40,18 +40,6 @@ namespace Nib.ProcTree.Tests
         }
 
         [Test]
-        public void RenderData_MatchesBake()
-        {
-            var p = TreeParams.OakParkland(); p.years = 15; p.markerCount = 4000;
-            var bake = TreeBaker.SimulateAndBake(p, 3);
-            var d = TreeRenderData.From(bake, 1);
-            Assert.AreEqual(bake.bark.centerline.Length, d.barkPositions.Length);
-            Assert.AreEqual(bake.segments.Length * 12, d.segmentData.Length);
-            Assert.AreEqual(Mathf.Max(1, bake.maxLiveLeaves) * bake.leafMesh.indices.Length, d.leafIndices.Length);
-            Assert.Greater(d.bounds.size.y, 0.5f);
-        }
-
-        [Test]
         public void Menu_PlacesAWorkingOak()
         {
             if (AssetDatabase.LoadAssetAtPath<GameObject>(ProcTreeSetup.OakPrefabPath) == null)

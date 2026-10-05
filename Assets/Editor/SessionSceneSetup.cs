@@ -37,7 +37,6 @@ public static class SessionSceneSetup
     const string StairsVideoPath = "Assets/Videos/UnityPart3.mov";
     const string CorridorVideoPath = "Assets/Videos/UnityPart4.mov";
     const string BciPrefabPath = "Assets/g.tec/Unity Interface/Prefabs/BCI/BCI Visual ERP 2D.prefab";
-    const string EegPipelinePrefabPath = "Assets/g.tec/Unity Interface/Prefabs/Pipelines/EEGData/EEGDataPipeline.prefab";
     const string CameraName = "Demo Camera";
     const string SyncLayerName = "SyncScreen";
     const int SyncLayerSlot = 8;
@@ -123,11 +122,12 @@ public static class SessionSceneSetup
         foreach (var d in new[] { grownDir, sproutDir }) Bind(d, cinema, tree, sun, post);
 
         // ── EEG from the g.tec Device ──
-        var (sync, eegPipeline) = BuildRig(syncLayer);
+        var (sync, pipelines) = BuildRig(syncLayer);
         receiver.source = UnicornBandReceiver.Source.External;
         var bridge = GetOrAdd<GtecEegBridge>(receiver.gameObject);
         bridge.receiver = receiver;
-        bridge.pipeline = eegPipeline;
+        bridge.pipeline = null; // made at runtime under pipelineParent: a saved one breaks the build
+        bridge.pipelineParent = pipelines;
         var overlay = GetOrAdd<EegSignalOverlay>(receiver.gameObject);
         overlay.receiver = receiver;
         overlay.driver = driver;
@@ -289,11 +289,17 @@ public static class SessionSceneSetup
 
     // ── g.tec rig + sync camera ─────────────────────────────────────────────
 
-    static (GtecSync sync, EEGDataPipeline eeg) BuildRig(int layer)
+    /// <summary>The rig, and the Device's Pipelines folder where the EEG pipeline is created at runtime.</summary>
+    static (GtecSync sync, Transform pipelines) BuildRig(int layer)
     {
         var existing = Object.FindAnyObjectByType<GtecSync>();
         if (existing != null && existing.TryGetComponent(out ChoiceScreen _))
-            return (existing, existing.GetComponentInChildren<EEGDataPipeline>(true));
+        {
+            // Rigs from before the runtime pipeline: drop the saved EEGDataPipeline.
+            foreach (var old in existing.GetComponentsInChildren<EEGDataPipeline>(true)) Undo.DestroyObjectImmediate(old.gameObject);
+            var sq = existing.GetComponentInChildren<SignalQualityPipeline>(true);
+            return (existing, sq != null ? sq.transform.parent : existing.transform);
+        }
         if (existing != null)
         {
             // The first version kept all of the prefab's tags; the choice needs the trimmed layout.
@@ -302,10 +308,9 @@ public static class SessionSceneSetup
         }
 
         var prefab = AssetDatabase.LoadAssetAtPath<GameObject>(BciPrefabPath);
-        var pipelinePrefab = AssetDatabase.LoadAssetAtPath<GameObject>(EegPipelinePrefabPath);
-        if (prefab == null || pipelinePrefab == null)
+        if (prefab == null)
         {
-            Debug.LogError($"[Session] Missing g.tec prefab ({BciPrefabPath} or {EegPipelinePrefabPath}).");
+            Debug.LogError($"[Session] Missing g.tec prefab {BciPrefabPath}.");
             return (null, null);
         }
 
@@ -313,11 +318,8 @@ public static class SessionSceneSetup
         PrefabUtility.UnpackPrefabInstance(rig, PrefabUnpackMode.Completely, InteractionMode.AutomatedAction);
         rig.transform.position = RigOrigin;
 
-        // EEG stream for the relaxation loop, beside the ERP pipeline under the same Device.
+        // The EEG stream for the relaxation loop goes beside the ERP pipeline under the same Device (GtecEegBridge, at runtime).
         var sibling = rig.GetComponentInChildren<SignalQualityPipeline>(true);
-        var pipelineGo = (GameObject)PrefabUtility.InstantiatePrefab(pipelinePrefab, sibling != null ? sibling.transform.parent : rig.transform);
-        var eeg = pipelineGo.GetComponent<EEGDataPipeline>();
-        eeg.Mode = Gtec.Chain.Common.SignalProcessingPipelines.DataPipelineMode.Raw; // RawEegProcessor filters itself
 
         var choice = BuildChoiceLayout(rig);
 
@@ -330,7 +332,7 @@ public static class SessionSceneSetup
         sync.uiCanvases = rig.GetComponentsInChildren<Canvas>(true);
         if (sync.device == null || sync.paradigm == null || sync.pipeline == null)
             Debug.LogError("[Session] g.tec rig is missing its Device, ERPParadigm or ERPPipeline.");
-        return (sync, eeg);
+        return (sync, sibling != null ? sibling.transform.parent : rig.transform);
     }
 
     // The StayContinue layout: the training tag in the middle and two class tags left and right — the

@@ -15,6 +15,10 @@ public class GtecEegBridge : MonoBehaviour
 {
     public EEGDataPipeline pipeline;
     public UnicornBandReceiver receiver;
+    [Tooltip("With no pipeline assigned, one is created under this (the g.tec Device's Pipelines) on Awake. " +
+             "An EEGDataPipeline saved in a scene corrupts the built player's scene data (its UnityEvent<float[,]> " +
+             "doesn't load in a player), so it must be made at runtime.")]
+    public Transform pipelineParent;
 
     const int EegChannels = UnicornBandReceiver.Channels;
     const int Fields = UnicornBandReceiver.RawFields;
@@ -23,6 +27,22 @@ public class GtecEegBridge : MonoBehaviour
     readonly object _lock = new object();
     bool _loggedFirst, _failed;
     float _counter;
+
+    void Awake()
+    {
+        if (pipeline != null || pipelineParent == null) return;
+        var go = new GameObject("EEGDataPipeline (runtime)") { layer = pipelineParent.gameObject.layer };
+        go.SetActive(false); // configure before its Awake/OnEnable
+        go.transform.SetParent(pipelineParent, false);
+        pipeline = go.AddComponent<EEGDataPipeline>();
+        pipeline.Mode = Gtec.Chain.Common.SignalProcessingPipelines.DataPipelineMode.Raw; // RawEegProcessor filters itself
+        pipeline.UpdateRateHz = 25;
+        // Unity's deserializer normally creates the UnityEvent fields; AddComponent leaves them null.
+        foreach (var f in typeof(EEGDataPipeline).GetFields(System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.Public))
+            if (typeof(UnityEngine.Events.UnityEventBase).IsAssignableFrom(f.FieldType) && f.GetValue(pipeline) == null)
+                f.SetValue(pipeline, System.Activator.CreateInstance(f.FieldType));
+        go.SetActive(true);
+    }
 
     void OnEnable()
     {
