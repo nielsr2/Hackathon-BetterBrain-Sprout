@@ -33,7 +33,9 @@ public static class SessionSceneSetup
     const string IntroPath = "Assets/Videos/UnityPart1.mov";
     const string LogoPath = "Assets/Videos/LogoSprout.webm";
     const string GlitchVideoPath = "Assets/Videos/Film_1b_LoadingPan.mp4"; // placeholder
-    const string SpookyVideoPath = "Assets/Videos/Film_1a_Orbit.mp4";      // placeholder until the spooky clip exists
+    const string SpookyVideoPath = "Assets/Videos/UnityPart2.mov";   // the corridor/stairs choice comes over its end
+    const string StairsVideoPath = "Assets/Videos/UnityPart3.mov";
+    const string CorridorVideoPath = "Assets/Videos/UnityPart4.mov";
     const string BciPrefabPath = "Assets/g.tec/Unity Interface/Prefabs/BCI/BCI Visual ERP 2D.prefab";
     const string EegPipelinePrefabPath = "Assets/g.tec/Unity Interface/Prefabs/Pipelines/EEGData/EEGDataPipeline.prefab";
     const string CameraName = "Demo Camera";
@@ -42,7 +44,6 @@ public static class SessionSceneSetup
     static readonly Vector3 RigOrigin = new Vector3(0f, -1000f, 0f); // far below the hill, out of every shot
     static readonly string[] OldRoots = { "Sequence", "Film" };
     const string ChoiceVideoMaterialPath = Folder + "/M_ChoiceVideo.mat";
-    const string ChoiceCsvPath = "Assets/StreamingAssets/Choices/choices.csv";
     const int TrainingClass = 1, LeftClass = 2, RightClass = 3;
     const float SyncOrthoSize = 5f, ButtonX = 5f, ButtonY = -1.2f, TrainingY = 0.8f;
 
@@ -143,8 +144,6 @@ public static class SessionSceneSetup
         flow.loadingBar = bar;
         flow.sync = sync;
         flow.choice = sync != null ? sync.GetComponent<ChoiceScreen>() : null;
-        if (!System.IO.File.Exists(ChoiceCsvPath))
-            Debug.LogWarning($"[Session] No {ChoiceCsvPath} yet; the session will end on the spooky video until it exists.");
         flow.treeCamera = treeCam;
         flow.syncCamera = syncCam;
         flow.grownTimeline = grownDir;
@@ -154,7 +153,9 @@ public static class SessionSceneSetup
         if (flow.introClip == null) Debug.LogWarning($"[Session] No intro clip at {IntroPath}; the session starts with the logo.");
         flow.logoClip = LoadLogo();
         flow.glitchVideo = AssetDatabase.LoadAssetAtPath<VideoClip>(GlitchVideoPath);
-        if (flow.spookyVideo == null) flow.spookyVideo = AssetDatabase.LoadAssetAtPath<VideoClip>(SpookyVideoPath);
+        flow.spookyVideo = AssetDatabase.LoadAssetAtPath<VideoClip>(SpookyVideoPath);
+        flow.stairsVideo = AssetDatabase.LoadAssetAtPath<VideoClip>(StairsVideoPath);
+        flow.corridorVideo = AssetDatabase.LoadAssetAtPath<VideoClip>(CorridorVideoPath);
         if (flow.logoClip == null) Debug.LogWarning($"[Session] No logo clip at {LogoPath}.");
         foreach (var o in new Object[] { flow, glitch, bar, grownDir, sproutDir }) EditorUtility.SetDirty(o);
         EditorSceneManager.MarkSceneDirty(root.scene);

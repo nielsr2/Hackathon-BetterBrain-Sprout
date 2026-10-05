@@ -16,9 +16,11 @@ using UnityEngine.Video;
 ///   Baseline — back to the orbit with the loading bar filling as the resting baseline is collected;
 ///   Sprout — quick fade to a fast orbit over the bare ground while a sprout pops up;
 ///   Interactive — the oak_bci loop with all overlays, until the tree reaches <see cref="growthGoal"/> or the timeout;
-///   Glitch video, then a second glitch into the spooky video;
-///   Choice — two ERP buttons (labels and videos from a CSV in StreamingAssets) over the end of the spooky
-///   video; the selection (EEG or mouse click) glitches into that button's video.
+///   Glitch video, then a second glitch into the spooky video (Part 2);
+///   Choice — two ERP buttons over the end of the spooky video, picked by EEG or mouse click:
+///     corridor (left) glitches into <see cref="corridorVideo"/> and ends the session;
+///     stairs (right) glitches into <see cref="stairsVideo"/> under <see cref="stairsText"/>, then back to
+///     the start of the spooky video and the same choice — until the corridor is picked.
 /// The sync screen is a separate camera that sees only the g.tec rig's layer. Fades, the logo and
 /// the sync titles are a runtime screen-space canvas; the end videos go through the Kino Overlay
 /// on <see cref="GlitchTransition"/> so the glitch distorts them too. Key N skips the current step (at the choice: picks the left button).
@@ -29,7 +31,7 @@ using UnityEngine.Video;
 [RequireComponent(typeof(GlitchTransition))]
 public sealed class SessionFlow : MonoBehaviour
 {
-    public enum Phase { Intro, Logo, Connect, Calibrate, Baseline, Sprout, Interactive, GlitchVideo, Spooky, Choice, Chosen, Done }
+    public enum Phase { Intro, Logo, Connect, Calibrate, Baseline, Sprout, Interactive, GlitchVideo, Spooky, Choice, Stairs, Chosen, Done }
 
     [Header("References")]
     public RelaxationTreeDriver driver;
@@ -52,14 +54,19 @@ public sealed class SessionFlow : MonoBehaviour
     public VideoClip logoClip;
     [Tooltip("The first glitch lands on this.")]
     public VideoClip glitchVideo;
-    [Tooltip("The second glitch lands on this.")]
+    [Tooltip("The second glitch lands on this; the choice comes over its end, and the stairs loop back to its start.")]
     public VideoClip spookyVideo;
 
     [Header("Final choice")]
-    [Tooltip("ERP buttons over the end of the spooky video; each plays its own video.")]
+    [Tooltip("ERP buttons over the end of the spooky video.")]
     public ChoiceScreen choice;
-    [Tooltip("Under StreamingAssets. Columns 'button' and 'video' (relative to the CSV's folder); the first two rows are used.")]
-    public string choiceCsv = "Choices/choices.csv";
+    [Tooltip("Left button: plays corridorVideo, which ends the session.")]
+    public string corridorLabel = "GO DOWN THE CORRIDOR";
+    public VideoClip corridorVideo;
+    [Tooltip("Right button: plays stairsVideo under stairsText, then back to the spooky video and the choice.")]
+    public string stairsLabel = "GO UP THE STAIRS";
+    public VideoClip stairsVideo;
+    public string stairsText = "YOU CAN'T GO UP THE STAIRS";
     [Tooltip("The buttons appear this many seconds before the spooky video ends.")]
     [Min(0f)] public float choiceLeadSeconds = 2f;
     [Range(0f, 1f)] public float videoVolume = 1f;
@@ -125,10 +132,7 @@ public sealed class SessionFlow : MonoBehaviour
         "BASELINE LOCKED",
     };
 
-    VideoPlayer _intro, _logo, _videoA, _spooky;
-    readonly VideoPlayer[] _choiceVideos = new VideoPlayer[2];
-    System.Collections.Generic.List<ChoiceOption> _choices = new System.Collections.Generic.List<ChoiceOption>();
-    readonly string[] _choicePaths = new string[2];
+    VideoPlayer _intro, _logo, _videoA, _spooky, _corridor, _stairs;
     bool _skip;
     GameObject _ui;
     Image _fade;
@@ -169,36 +173,7 @@ public sealed class SessionFlow : MonoBehaviour
     {
         if (sync != null) sync.ShowUi(false);
         UseSyncCamera(false);
-        LoadChoices();
         StartCoroutine(Run());
-    }
-
-    // A bad or missing CSV is reported and the session simply ends on the spooky video.
-    void LoadChoices()
-    {
-        _choices.Clear();
-        if (choice == null) return;
-        string csvPath = System.IO.Path.Combine(Application.streamingAssetsPath, choiceCsv);
-        try
-        {
-            if (!System.IO.File.Exists(csvPath)) throw new System.IO.FileNotFoundException($"No choice CSV at {csvPath}.");
-            var options = ChoiceCsv.Parse(System.IO.File.ReadAllText(csvPath), 2, out var warnings);
-            foreach (var w in warnings) Debug.LogWarning($"[Session] {w}", this);
-            string folder = System.IO.Path.GetDirectoryName(csvPath);
-            for (int i = 0; i < 2; i++)
-            {
-                string video = System.IO.Path.GetFullPath(System.IO.Path.Combine(folder, options[i].Video));
-                if (!System.IO.File.Exists(video)) throw new System.IO.FileNotFoundException($"'{options[i].Label}': no video at {video}.");
-                _choicePaths[i] = video;
-            }
-            _choices = options;
-            Debug.Log($"[Session] Choice: '{options[0].Label}' / '{options[1].Label}' ({csvPath}).");
-        }
-        catch (System.Exception e) when (e is System.FormatException || e is System.IO.IOException)
-        {
-            _choices.Clear();
-            Debug.LogError($"[Session] Choice disabled — {e.Message}", this);
-        }
     }
 
     void Update()
@@ -376,11 +351,8 @@ public sealed class SessionFlow : MonoBehaviour
         SetOverlays(true);
         if (glitchVideo != null) { _videoA = CreatePlayer(glitchVideo, "Glitch video", audio: true); _videoA.Prepare(); }
         if (spookyVideo != null) { _spooky = CreatePlayer(spookyVideo, "Spooky video", audio: true); _spooky.Prepare(); }
-        for (int i = 0; i < _choices.Count; i++)
-        {
-            _choiceVideos[i] = CreatePlayer(null, $"Choice {i}", audio: true, url: _choicePaths[i]);
-            _choiceVideos[i].Prepare();
-        }
+        if (corridorVideo != null) { _corridor = CreatePlayer(corridorVideo, "Corridor video", audio: true); _corridor.Prepare(); }
+        if (stairsVideo != null) { _stairs = CreatePlayer(stairsVideo, "Stairs video", audio: true); _stairs.Prepare(); }
         while (!_skip && !SequenceRules.TreeFinished(driver != null ? driver.displayedGrowth : 0f, growthGoal, 0f,
                    phaseElapsed, interactiveTimeout))
             yield return null;
@@ -396,41 +368,65 @@ public sealed class SessionFlow : MonoBehaviour
         // ── Glitch into the spooky video ──
         Enter(Phase.Spooky);
         yield return GlitchTo(_spooky, () => { if (_videoA != null) _videoA.Pause(); });
-        if (choice == null || _choiceVideos[0] == null)
+        if (choice == null || _corridor == null)
         {
             // No choice configured: the spooky video is the end.
+            if (choice != null) Debug.LogWarning("[Session] No corridor video: the session ends on the spooky video.", this);
             if (_spooky != null) yield return WaitForEnd(_spooky, quitAtEnd ? recordTailSeconds : 0f);
             else if (quitAtEnd) yield return Wait(recordTailSeconds);
         }
         else
         {
-            // ── ERP choice over the end of the spooky video, which then holds its last frame ──
-            while (!_skip && _spooky != null && _spooky.isPlaying && _spooky.length - _spooky.time > choiceLeadSeconds)
-                yield return null;
-            Enter(Phase.Choice);
-            choice.Show(_choices[0].Label, _choices[1].Label, _spooky != null ? _spooky.targetTexture : null);
-            UseSyncCamera(true);
-            if (sync != null && sync.Calibrated) sync.StartChoice();
-            else Debug.Log("[Session] No calibrated classifier: choose with a mouse click (or ←/→ in debug mode).");
-            choice.BeginChoosing();
-            while (choice.Selected < 0)
+            while (true)
             {
-                if (_spooky != null && _spooky.isPlaying && _spooky.time >= _spooky.length - 0.1) _spooky.Pause();
-                if (_skip) choice.Select(0);
-                yield return null;
-            }
-            int pick = choice.Selected;
-            Debug.Log($"[Session] Chose '{_choices[pick].Label}' → {_choices[pick].Video}.");
-            if (sync != null) sync.StopParadigm();
+                // ── ERP choice over the end of the spooky video, which then holds its last frame ──
+                while (!_skip && _spooky != null && _spooky.isPlaying && _spooky.length - _spooky.time > choiceLeadSeconds)
+                    yield return null;
+                Enter(Phase.Choice);
+                choice.Show(corridorLabel, stairsLabel, _spooky != null ? _spooky.targetTexture : null);
+                UseSyncCamera(true);
+                if (sync != null && sync.Calibrated) sync.StartChoice();
+                else Debug.Log("[Session] No calibrated classifier: choose with a mouse click (or ←/→ in debug mode).");
+                choice.BeginChoosing();
+                while (choice.Selected < 0)
+                {
+                    if (_spooky != null && _spooky.isPlaying && _spooky.time >= _spooky.length - 0.1) _spooky.Pause();
+                    if (_skip) choice.Select(0);
+                    yield return null;
+                }
+                bool corridor = choice.Selected == 0 || _stairs == null;
+                Debug.Log($"[Session] Chose '{(choice.Selected == 0 ? corridorLabel : stairsLabel)}'.");
+                if (sync != null) sync.StopParadigm();
+                UseSyncCamera(false); // the Kino overlay underneath still shows the same frame
+                choice.Hide();
 
-            // ── Glitch into the chosen video ──
-            Enter(Phase.Chosen);
-            UseSyncCamera(false); // the Kino overlay underneath still shows the same frame
-            choice.Hide();
-            var chosen = _choiceVideos[pick];
-            yield return GlitchTo(chosen, () => { if (_spooky != null) _spooky.Pause(); });
-            yield return WaitForEnd(chosen);
-            if (quitAtEnd) yield return Wait(recordTailSeconds);
+                if (corridor)
+                {
+                    // ── Glitch into the corridor: the end ──
+                    Enter(Phase.Chosen);
+                    yield return GlitchTo(_corridor, () => { if (_spooky != null) _spooky.Pause(); });
+                    yield return WaitForEnd(_corridor);
+                    if (quitAtEnd) yield return Wait(recordTailSeconds);
+                    break;
+                }
+
+                // ── The stairs: "you can't", then back to the start of the spooky video ──
+                Enter(Phase.Stairs);
+                yield return GlitchTo(_stairs, () =>
+                {
+                    if (_spooky != null) _spooky.Pause();
+                    SetText(stairsText, "");
+                });
+                yield return WaitForEnd(_stairs);
+                Enter(Phase.Spooky);
+                if (_spooky != null) { _spooky.Pause(); _spooky.time = 0; }
+                yield return GlitchTo(_spooky, () =>
+                {
+                    SetText("", "");
+                    _stairs.Pause();
+                    _stairs.time = 0;
+                });
+            }
         }
 
         Enter(Phase.Done);
@@ -591,7 +587,8 @@ public sealed class SessionFlow : MonoBehaviour
         DisposePlayer(ref _logo);
         DisposePlayer(ref _videoA);
         DisposePlayer(ref _spooky);
-        for (int i = 0; i < _choiceVideos.Length; i++) DisposePlayer(ref _choiceVideos[i]);
+        DisposePlayer(ref _corridor);
+        DisposePlayer(ref _stairs);
         if (_ui != null) Destroy(_ui);
     }
 

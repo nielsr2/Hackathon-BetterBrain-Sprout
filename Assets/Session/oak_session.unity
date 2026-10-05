@@ -1990,9 +1990,13 @@ MonoBehaviour:
   introClip: {fileID: 32900000, guid: e072a606a4c376041988cdffec02ef9f, type: 3}
   logoClip: {fileID: 32900000, guid: 9b2a988f2afb1dd4e82ec7893d2b3508, type: 3}
   glitchVideo: {fileID: 32900000, guid: ef6f4cf5febf8a940baa2ee181525708, type: 3}
-  spookyVideo: {fileID: 32900000, guid: c93a4d8aa2a598e4998ae875b4ef80e4, type: 3}
+  spookyVideo: {fileID: 32900000, guid: 9abbe380b50ad0e449e3ce1ca7d5f55c, type: 3}
   choice: {fileID: 8077241406786601756}
-  choiceCsv: Choices/choices.csv
+  corridorLabel: GO DOWN THE CORRIDOR
+  corridorVideo: {fileID: 32900000, guid: cbac770917f102b42a26168b6c17f6f9, type: 3}
+  stairsLabel: GO UP THE STAIRS
+  stairsVideo: {fileID: 32900000, guid: 1b7ec5b4fe2d96b49b4bbb16dbcf0248, type: 3}
+  stairsText: YOU CAN'T GO UP THE STAIRS
   choiceLeadSeconds: 2
   videoVolume: 1
   connectTitle: CONNECT YOUR UNICORN

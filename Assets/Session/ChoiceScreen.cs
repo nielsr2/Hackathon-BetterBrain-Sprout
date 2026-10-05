@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 /// <summary>
-/// The final choice on the sync screen: the two g.tec class tags get the CSV labels and sit over the
+/// The final choice on the sync screen: the two g.tec class tags get the session's labels and sit over the
 /// video (a full-screen quad seen only by the sync camera), the training tag is hidden. A selection
 /// comes from the ERP pipeline (<see cref="ERPTag.OnTagSelected"/>, possibly off the main thread)
 /// or a mouse click on a tag's collider — the tags' own OnMouseDown never fires with Input System only.
